@@ -17,3 +17,12 @@ runs:
         name: ${{ inputs.name }}
         path: ${{ inputs.path }}
         retention-days: 14
+
+    - name: Link artifacts in a comment on the PR
+      uses: tonyhallett/artifacts-url-comments@v1.1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        prefix: These artifacts from the CI pipeline can be used to test this PR:
+        format: name
+        addTo: pull
